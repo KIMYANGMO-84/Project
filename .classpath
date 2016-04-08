@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+	<classpathentry kind="lib" path="/home/bitcamp/.gradle/caches/modules-2/files-2.1/org.apache.bcel/bcel/5.2/96b2cefeb067c08c31225d48e2a689f814baae25/bcel-5.2.jar"/>
+	<classpathentry sourcepath="/home/bitcamp/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.38/b83cac8c938dfb9b7a8e191e2d482be88eb8280c/mysql-connector-java-5.1.38-sources.jar" kind="lib" path="/home/bitcamp/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.38/dbbd7cd309ce167ec8367de4e41c63c2c8593cc5/mysql-connector-java-5.1.38.jar"/>
+	<classpathentry sourcepath="/home/bitcamp/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.3.1/f1bd5cb1abf3b94ae17f0fb93638ae1a252a014f/mybatis-3.3.1-sources.jar" kind="lib" path="/home/bitcamp/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.3.1/b8911e00bb80bece8da02ed38d964bbcae1caf23/mybatis-3.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/bitcamp/.gradle/caches/modules-2/files-2.1/jakarta-regexp/jakarta-regexp/1.4/ea514a179ac1dd7e81c7e6594468b9b9910d298/jakarta-regexp-1.4.jar"/>
+</classpath>
