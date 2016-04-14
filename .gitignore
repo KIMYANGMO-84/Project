@@ -1,6 +1,2 @@
 /bin/
-.gitignore
-.classpath
-.git/
-.gradle/
-.settings/
+.*
