@@ -190,29 +190,79 @@
      메뉴 처리기를 준비하는 일도 한다. 
 
 #22
-- 객체를 보관할 때 사용할 이름은 애노테이션으로부터 얻는다
-=> 애노테이션 적용
+- 객체를 보관할 때 사용할 이름은 애노테이션으로부터 얻는다.
+  => 애노테이션 적용!
 
 #23
-- 커맨드 패턴을 적용하여 명령어 당 한 개의 클래스로 구성하라.
+- 커맨드 패턴을 적용하여 명령어 당 한 개의 처리 클래스로 구성하라. 
 예)
 [이전 방식]
 명령> go member
-프로젝트관리 > list
+프로젝트관리> list
 
-[새 방식]
+[변경 방식]
 명령> member/list.do
+.....
 명령> member/add.do
+.....
 
 #24
--여러 컨트롤러에 중복되어 있는 기능을 한 클래스로 만든다.
-- Data를 처리하는 전문 클래스를 도입한다.
-  -> "DAO"라 부른다. Data Access Object
-  -> Data Persistence 객체
+- 여러 컨트롤러에 중복되어 있는 기능을 한 클래스로 만든다.
+- Data를 처리하는 전문 클래스를 도입한다. 
+  => "DAO"라 부른다. Data Access Object
+  => Data Persistence 객체 
+  
+#25
+- Information Expert 패턴에 따라 XxxDao 클래스가 데이터 처리를
+  완전히 담당하게 개선하라!
 
-#29
+#26
+- 객체 공유와 의존 객체 주입(Dependency Injection) 적용
+
+#27
+- @RequestMapping 애노테이션을 추가한다.
+  => 명령어를 처리하는 메서드를 지정한다.
+  => MenuController 인터페이스가 필요없어 진다.
+- XxxController는 MenuController 인터페이스를 구현하는 대신에
+  @RequestMapping 애노테이션을 사용하여
+  ProjectApp이 호출할 메서드를 지정한다.
+
+#28
+- 명령어를 처리하는 메서드(RequestHandler)의 파라미터 선언을 자유롭게 하도록 
+  변경한다. 
+- ProjectApp에서는 메서드를 호출하기 전에 파라미터를 분석하여 그에 맞는
+  값을 준비해야 한다.  
+
+
+#29 
 - 여러 클래스에 분산되어 있는 CRUD(Create/Read/Update/Delete)관련 
   메서드를 한 클래스로 합친다.
-- 반드시 합쳐야 하는 것은 아니며, 합치는 것이 유지보수에 낫다고 판단되면 합쳐라!
-- 컨트롤러 클래스에 @RequestMapping이 있다면, 메서드 정보를 저장할 때
-  클래스에 설정된 @RequestMapiing값과 합쳐서 명령어 정보를 저장하라!
+- 반드시 합쳐야 하는 것은 아니다.
+- 합치는 것이 유지보수에 낫다고 판단되면 합쳐라!
+- 컨트롤러 클래스에 @RequestMapping 이 있다면, 메서드를 정보를 저장할 때
+  클래스에 설정된 @RequestMapping 값과 합쳐서 명령어 정보를 저장하라!
+
+#30
+- XxxDao에 JDBC를 적용하라!
+
+#31
+- Connection 객체를 별도로 준비하여 DAO 객체에 주입하라!
+
+#32
+- 커넥션풀(ConnectionPool)을 적용하기
+  => 사용할 때 마다 커넥션을 만들지 않는다.
+  => 사용한 커넥션을 재활용하여 커넥션 생성을 줄인다.
+
+#33
+- persistence framework "mybatis" 적용
+- 로그인 기능 추가
+  => req-33.txt 파일 참조 
+
+
+
+
+
+
+
+
+#

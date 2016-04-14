@@ -1,23 +1,18 @@
 package bitcamp.pms;
 
-import bitcamp.pms.util.PatternChecker;
+import java.util.HashMap;
 
 public class Test2 {
 
   public static void main(String[] args) {
-    String[] strs = {
-    "000-0000-0000",
-    "00-0000-0000",
-    "00000-000-0000",
-    "0000-00000",
-    "00000-0000",
-    "1111-1111"};
-    for (int i = 0; i < strs.length; i++)
-      System.out.println(PatternChecker.isTel(strs[i]));
+    HashMap<String,Object> pool = new HashMap<>();
+    pool.put("state", true);
     
-    System.out.println("--------------------------------------");
-    for (int i = 0; i < strs.length; i++)
-      System.out.println(PatternChecker.isCellPhone(strs[i]));
+    System.out.println(pool.get("state"));
+    System.out.println("------------------");
+    pool.put("state", false);
+    
+    System.out.println(pool.get("state"));
+    System.out.println("------------------");
   }
-
 }

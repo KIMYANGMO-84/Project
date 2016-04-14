@@ -61,6 +61,6 @@ public class PatternChecker {
     }
 
     public static boolean isPassword(String check) { 
-      return Pattern.matches("^(?=.*[a-zA-Z])((?=.*\\d*\\w[!,@,?])).{4,10}$", check);
+      return Pattern.matches("^(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@?])([a-zA-Z0-9!@?]){4,10}$", check);
     }
 }

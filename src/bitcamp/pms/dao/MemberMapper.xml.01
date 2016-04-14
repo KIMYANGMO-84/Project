@@ -4,10 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="MemberDao">
   <!-- 테이블의 컬럼 이름과 VO 클래스의 프로퍼티 이름을 미리 연결해 둘수 있다. -->
-  <!-- 여러 군데에서 중복되는 SQL 문을 분리하여 관리 -->
-  <sql id="select01">
-  select * from MEMBERS
-  </sql>
   <resultMap type="Member" id="MemberMap">
     <!-- PK 컬럼은 id태그로 선언하라 -->
     <id     column="MNO"    property="no"/>
@@ -42,21 +38,16 @@
        단, resultType 속성 대신 resultMap속성을 지정해야 한다.      
    -->
   <select id="selectList" resultMap="MemberMap">
-    <include refid="select01"/>
-    order by MNAME asc
+    select * from MEMBERS
   </select>
   
-  <select id="selectOne" parameterType="map" resultMap="MemberMap">
-    <include refid="select01"/>
-     where 
-    <if test="no != null">
-      MNO=#{no}
-    </if>
-    <if test="email != null">
-     EMAIL=#{email}
-    </if>
-  </select>  
+  <select id="selectOne" parameterType="int" resultMap="MemberMap">
+    select * from MEMBERS where MNO=#{no}
+  </select>
   
+  <select id="selectOneByEmail" parameterType="string" resultMap="MemberMap">
+    select * from MEMBERS where EMAIL=#{email}
+  </select>
   
   <select id="isMember" parameterType="map" resultType="int">
     select count(*) 

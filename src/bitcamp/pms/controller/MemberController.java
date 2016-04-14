@@ -3,8 +3,10 @@ package bitcamp.pms.controller;
 import java.util.List;
 import java.util.Scanner;
 
+import bitcamp.pms.Test01;
 import bitcamp.pms.annotation.Controller;
 import bitcamp.pms.annotation.RequestMapping;
+import bitcamp.pms.annotation.StartUp;
 import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
 import bitcamp.pms.util.CommandUtil;
@@ -98,29 +100,39 @@ public class MemberController {
     }        
   }
   
-  @RequestMapping("Unsubscribe.do")
-  public boolean doUnsubscribe(Member member, Scanner keyScan) {
-    try {      
-      int no = member.getNo();
+  @RequestMapping("unsubscribe.do")
+  public void doUnsubscribe(Scanner keyScan) {
+    try { 
+      Member member;
+      int no;
+      while (true) {
+        System.out.println("탈퇴 할 계정 정보를 확인합니다");
+        System.out.print("email : ");
+        String input = keyScan.nextLine();
+        if (search(input) != null) {
+          member = search(input);
+          no = member.getNo();
+          break;
+        }
+      }  
       if (CommandUtil.confirm(keyScan, "정말 탈퇴하시겠습니까?")) {
         int count =  memberDao.delete(no);
         if (count > 0) {
           System.out.println("회원 정보를 삭제하였습니다.");
           System.out.println("-----------------------------------");
-          return true;
+          Test01.state = 0;
         } else {
           System.out.println("취소하였습니다.");
           System.out.println("-----------------------------------");
-          return false;
+          Test01.state = 1;
         } 
       }      
     } catch (Exception e) {
         System.out.println("데이터 처리에 실패했습니다.");
-    }
-    return false;
+    }    
   }
   
-  @RequestMapping("signIn.do")
+  @StartUp("2")
   public void doSignIn(Scanner keyScan) {
     Member member = new Member();
     String check;
@@ -171,7 +183,7 @@ public class MemberController {
     }    
   }
   
-  @RequestMapping("login.do")
+  @StartUp("1")
   public void doLogin(Scanner keyScan) {    
     Member member;
     while (true) {
@@ -193,7 +205,8 @@ public class MemberController {
         System.out.println("등록되지 않은 사용자입니다.");
       }
     } 
-    System.out.printf("환영합니다 %s님!\n", member.getName());    
+    System.out.printf("환영합니다 %s님!\n", member.getName());
+    Test01.state = 1;
   }
   
   @RequestMapping("update.do")

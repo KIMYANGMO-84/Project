@@ -14,7 +14,7 @@ import bitcamp.pms.context.request.RequestHandler;
 import bitcamp.pms.context.request.RequestHandlerMapping;
 import bitcamp.pms.context.request.StartUpHandlerMapping;
 
-public class Test01 {
+public class Test3 {
   static ApplicationContext appContext;
   static RequestHandlerMapping requestHandlerMapping;
   static Scanner keyScan = new Scanner(System.in);  
@@ -87,7 +87,7 @@ public class Test01 {
       } catch (Exception e) {
         System.out.println("명령 처리중에 오류가 발생했습니다.");
       }    
-    }    
+    }      
   }
 
   static String prompt(int state) {
