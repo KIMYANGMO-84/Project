@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+    <typeAlias type="bitcamp.pms.domain.Board" alias="Board"/>
+    <typeAlias type="bitcamp.pms.domain.Member" alias="Member"/>
+    <typeAlias type="bitcamp.pms.domain.Project" alias="Project"/>
+  </typeAliases>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver"     value="com.mysql.jdbc.Driver"/>
+        <property name="url"        value="jdbc:mysql://localhost:3306/java80db"/>
+        <property name="username"   value="java80"/>
+        <property name="password"   value="1111"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="bitcamp/pms/dao/BoardMapper.xml"/>
+    <mapper resource="bitcamp/pms/dao/MemberMapper.xml"/>
+    <mapper resource="bitcamp/pms/dao/ProjectMapper.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,4 @@
-// 1) 초기 메뉴 출력
-package bitcamp.pms;
+package bitcamp.pms; 
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -14,7 +13,7 @@ import bitcamp.pms.context.ApplicationContext;
 import bitcamp.pms.context.request.RequestHandler;
 import bitcamp.pms.context.request.RequestHandlerMapping;
 import bitcamp.pms.controller.AuthController;
-import bitcamp.pms.util.Session;
+import bitcamp.pms.util.Session; 
 
 //=> 정리
 // static 필드나 메서드를 인스턴스 필드와 메서드로 전환한다.
