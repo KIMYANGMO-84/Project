@@ -81,9 +81,11 @@ public class ApplicationContext {
   private void createObject(File file) {
     if (file.isFile() && file.getName().endsWith(".class")) {
       String classNameWithPackage = file.getPath()
-                        .replace("./bin/", "")
-                        .replace(".class", "")
-                        .replace("/", ".");
+          .replace("./bin/", "")
+          .replace(".class", "")
+          .replace("/", ".")
+          .replace(".\\bin\\", "")                        
+          .replace("\\", ".");
       try {
         Class<?> clazz = Class.forName(classNameWithPackage);
         //@Component 또는 @Controller 애노테이션이 붙었는지 알아본다
