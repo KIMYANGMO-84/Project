@@ -258,7 +258,8 @@
 - 로그인 기능 추가
   => req-33.txt 파일 참조 
 
-
+#34
+- spring framework적용
 
 
 

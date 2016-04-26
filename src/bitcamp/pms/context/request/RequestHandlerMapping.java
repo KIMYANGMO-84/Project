@@ -14,9 +14,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import bitcamp.pms.annotation.Controller;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+
 import bitcamp.pms.annotation.RequestMapping;
-import bitcamp.pms.context.ApplicationContext;
 
 public class RequestHandlerMapping {
   ApplicationContext appContext;

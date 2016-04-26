@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import bitcamp.pms.annotation.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import bitcamp.pms.annotation.RequestMapping;
 import bitcamp.pms.dao.TaskDao;
 import bitcamp.pms.domain.Task;
@@ -13,12 +15,9 @@ import bitcamp.pms.util.CommandUtil;
 @Controller
 @RequestMapping("task/")
 public class TaskController {
- 
+ @Autowired
   private TaskDao taskDao;
  
-  public void setTaskDao(TaskDao taskDao) {
-    this.taskDao = taskDao;
-  }
   @RequestMapping("add.do")
   public void add(Scanner keyScan) {       
     
@@ -123,5 +122,5 @@ public class TaskController {
     } catch (Exception e) {
         System.out.println("에러 발생");
     }
-  }  
+  } 
 }

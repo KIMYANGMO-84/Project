@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 하는 일:
+      1) @Component, @Service, @Controller, @Repository 애노테이션이 붙은
+        클래스를 찾아서 인스턴스를 생성한다.
+      2) @Autowired, @Qualifier, @Resource등의 애노테이션을 처리한다.
+        위와 같은 일을 할 객체를 등록한다.  
+     -->
+    <context:component-scan base-package="bitcamp.pms"/>
+    
+    <!-- 하는 일:
+      1) Mybatis의 SqlSessionFactory 객체를 준비한다.      
+     -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"/>
+      <property name="mapperLocations" 
+                value="classpath*:bitcamp/pms/dao/*Mapper.xml"/>
+      <property name="typeAliasesPackage" value="bitcamp.pms.domain"/>          
+    </bean>
+    
+    <!-- DAO 인터페이스를 찾아서 자동으로 구현체를 생성한다. -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+      <!--  DAO 인터페이스가 있는 패키지를 지정한다. -->
+      <property name="basePackage" value="bitcamp.pms.dao"/>
+    </bean>
+    
+    <!-- 하는 일:
+      1) DB 커넥션을 관리할 객체를 준비한다.      
+     -->
+    <bean id="dataSource" 
+          class="org.apache.commons.dbcp.BasicDataSource" 
+          destroy-method="close">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+      <property name="url" value="jdbc:mysql://localhost:3306/java80db" />
+      <property name="username" value="java80" />
+      <property name="password" value="1111" />
+</bean>
+    
+    
+</beans>

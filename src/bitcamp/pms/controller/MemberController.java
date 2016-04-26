@@ -1,26 +1,22 @@
 package bitcamp.pms.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-import bitcamp.pms.Test01;
-import bitcamp.pms.annotation.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import bitcamp.pms.annotation.RequestMapping;
-import bitcamp.pms.annotation.StartUp;
 import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
 import bitcamp.pms.util.CommandUtil;
-import bitcamp.pms.util.PatternChecker;
 
 @Controller
 @RequestMapping("member/")
 public class MemberController {
-  
-  private MemberDao memberDao;
- 
-  public void setMemberDao(MemberDao memberDao) {
-    this.memberDao = memberDao;
-  }
+  @Autowired
+  private MemberDao memberDao; 
 
   @RequestMapping("add.do")
   public void add(Scanner keyScan) {    
@@ -119,12 +115,10 @@ public class MemberController {
         int count =  memberDao.delete(no);
         if (count > 0) {
           System.out.println("회원 정보를 삭제하였습니다.");
-          System.out.println("-----------------------------------");
-          Test01.state = 0;
+          System.out.println("-----------------------------------");          
         } else {
           System.out.println("취소하였습니다.");
-          System.out.println("-----------------------------------");
-          Test01.state = 1;
+          System.out.println("-----------------------------------");          
         } 
       }      
     } catch (Exception e) {
@@ -138,7 +132,9 @@ public class MemberController {
       this.list();
       System.out.print("변경할 회원 번호는? ");
       int no = Integer.parseInt(keyScan.nextLine());      
-      Member member = memberDao.selectOne(no);      
+      HashMap<String,Object> paramMap = new HashMap<>();
+      paramMap.put("no", no);
+      Member member = memberDao.selectOne(paramMap);      
       System.out.printf("이름(%s)? ", member.getName());
       member.setName(keyScan.nextLine());
       System.out.printf("이메일(%s)? ", member.getEmail());

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
-<mapper namespace="MemberDao">
+<mapper namespace="bitcamp.pms.dao.MemberDao">
   <!-- 테이블의 컬럼 이름과 VO 클래스의 프로퍼티 이름을 미리 연결해 둘수 있다. -->
   <!-- 여러 군데에서 중복되는 SQL 문을 분리하여 관리 -->
   <sql id="select01">
